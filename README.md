@@ -1,6 +1,6 @@
 # CurrencyApp
 
-App that shows actual currency of USD and EUR. Also there is converter. Created by using Clean Architecture + MVVM pattern,
+App that shows actual rates of USD and EUR. Also there is converter. Created by using Clean Architecture + MVVM pattern,
 Retrofit, Kotlin Coroutines and Hilt libraries.
 
 ## How to use my app:
