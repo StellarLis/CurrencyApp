@@ -17,14 +17,8 @@ class RepositoryImpl() : Repository {
 
     override suspend fun getCurrencyList(): List<CurrencyRVModel> {
         if (listToRV.isEmpty()) {
-            val currencyUsdModel: CurrencyModel? = GlobalScope.async {
-                RetrofitInstance.getClient()
-                    .getUsdRate().execute().body()
-            }.await()
-            val currencyEurModel: CurrencyModel? = GlobalScope.async {
-                RetrofitInstance.getClient()
-                    .getEurRate().execute().body()
-            }.await()
+            val currencyUsdModel: CurrencyModel? = RetrofitInstance.getClient().getUsdRate().body()
+            val currencyEurModel: CurrencyModel? = RetrofitInstance.getClient().getEurRate().body()
             // Initializing currency for getConvertedValue
             usdCurrency = currencyUsdModel?.rates?.RUB
             eurCurrency = currencyEurModel?.rates?.RUB
