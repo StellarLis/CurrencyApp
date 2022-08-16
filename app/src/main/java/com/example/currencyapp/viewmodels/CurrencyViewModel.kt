@@ -23,7 +23,7 @@ class CurrencyViewModel @Inject constructor(
             val list = getCurrencyListUseCase.execute()
             list[0].imageSource = R.drawable.us
             list[1].imageSource = R.drawable.european
-            listForRV.value = list
+            listForRV.postValue(list)
         }
     }
 }
