@@ -8,10 +8,10 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 
 class RepositoryImpl() : Repository {
-    var usdCurrency: Double? = 60.31
-    var eurCurrency: Double? = 61.1615
-    var rubToUsdCurrency: Double? = 1 / usdCurrency!!
-    var rubToEurCurrency: Double? = 1 / eurCurrency!!
+    var usdCurrency: Double? = null
+    var eurCurrency: Double? = null
+    var rubToUsdCurrency: Double? = null
+    var rubToEurCurrency: Double? = null
     val listToRV = ArrayList<CurrencyRVModel>()
 
     override suspend fun getCurrencyList(): List<CurrencyRVModel> {
