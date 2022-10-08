@@ -8,7 +8,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 
 class RepositoryImpl() : Repository {
-    // Need to set null value of all variables
     var usdCurrency: Double? = 60.31
     var eurCurrency: Double? = 61.1615
     var rubToUsdCurrency: Double? = 1 / usdCurrency!!
