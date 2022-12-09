@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.currencyapp.R
 import com.example.currencyapp.adapters.CurrencyAdapter
@@ -31,6 +32,9 @@ class CurrencyFragment : Fragment() {
         binding.rcView.adapter = adapter
         vm.listForRV.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+        }
+        vm.errorMessage.observe(viewLifecycleOwner) {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
         }
         vm.setList()
     }
