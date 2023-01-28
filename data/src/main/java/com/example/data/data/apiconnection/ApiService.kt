@@ -6,9 +6,6 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
-    @GET("latest?symbols=RUB&base=USD&apikey=${Constance.API_KEY}")
-    suspend fun getUsdRate(): Response<CurrencyModel>
-
-    @GET("latest?symbols=RUB&base=EUR&apikey=${Constance.API_KEY}")
-    suspend fun getEurRate(): Response<CurrencyModel>
+    @GET("latest?symbols=USD,EUR,GBP,CNY,JPY,INR,TRY,CHF,ILS&base=RUB&apikey=${Constance.API_KEY}")
+    suspend fun getRates(): Response<CurrencyModel>
 }

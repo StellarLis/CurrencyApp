@@ -2,6 +2,8 @@ package com.example.currencyapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.Navigation
+import androidx.navigation.ui.setupWithNavController
 import com.example.currencyapp.databinding.ActivityMainBinding
 import com.example.currencyapp.presentation.ConverterFragment
 import com.example.currencyapp.presentation.CurrencyFragment
@@ -15,26 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.frame, CurrencyFragment())
-            .addToBackStack(null)
-            .commit()
         //
-        binding.bNav.setOnNavigationItemSelectedListener {
-            val fm = supportFragmentManager.beginTransaction()
-            when (it.itemId) {
-                R.id.currencyIcon -> {
-                    fm.replace(R.id.frame, CurrencyFragment())
-                    binding.tvTitle.text = "Exchange rates"
-                }
-                R.id.converterIcon -> {
-                    fm.replace(R.id.frame, ConverterFragment())
-                    binding.tvTitle.text = "Converter"
-                }
-            }
-            fm.addToBackStack(null)
-            fm.commit()
-            true
-        }
+        val navController = Navigation.findNavController(this, R.id.navHost)
+        binding.bNav.setupWithNavController(navController)
     }
 }

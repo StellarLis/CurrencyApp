@@ -9,14 +9,28 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import com.example.currencyapp.R
+import com.example.currencyapp.adapters.ConverterAdapter
 import com.example.currencyapp.databinding.FragmentConverterBinding
 import com.example.currencyapp.viewmodels.ConverterViewModel
+import com.example.domain.domain.models.ConverterModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ConverterFragment : Fragment() {
     private lateinit var binding: FragmentConverterBinding
     private val vm: ConverterViewModel by viewModels()
+    private lateinit var adapter: ConverterAdapter
+    private val listOfItems = listOf(
+        ConverterModel("USD", R.drawable.us, 1),
+        ConverterModel("EUR", R.drawable.european, 2),
+        ConverterModel("GBP", R.drawable.united_kingdom, 3),
+        ConverterModel("CNY", R.drawable.china, 4),
+        ConverterModel("JPY", R.drawable.japan, 5),
+        ConverterModel("INR", R.drawable.india, 6),
+        ConverterModel("TRY", R.drawable.turkey, 7),
+        ConverterModel("CHF", R.drawable.switzerland, 8),
+        ConverterModel("ILS", R.drawable.israel, 9),
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,47 +43,8 @@ class ConverterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //
-        vm.rubToUsdData.observe(viewLifecycleOwner) {
-            binding.edRubUsd.setText(it.toString())
-        }
-        vm.usdData.observe(viewLifecycleOwner) {
-            binding.edUsdRub.setText(it.toString())
-        }
-        vm.rubToEurData.observe(viewLifecycleOwner) {
-            binding.edRubEur.setText(it.toString())
-        }
-        vm.eurData.observe(viewLifecycleOwner) {
-            binding.edEurRub.setText(it.toString())
-        }
-        // USD listeners
-        var isRubChangedLatestUSD: Boolean = true
-        binding.edRubUsd.addTextChangedListener {
-            isRubChangedLatestUSD = true
-        }
-        binding.edUsdRub.addTextChangedListener {
-            isRubChangedLatestUSD = false
-        }
-        binding.changeUsdBtn.setOnClickListener {
-            if (!binding.edUsdRub.text.isEmpty() && !isRubChangedLatestUSD) {
-                vm.setRubToUsdData(binding.edUsdRub.text.toString().toDouble())
-            } else if (!binding.edRubUsd.text.isEmpty() && isRubChangedLatestUSD){
-                vm.setUsdData(binding.edRubUsd.text.toString().toDouble())
-            }
-        }
-        // EUR listeners
-        var isRubChangedLatestEUR: Boolean = true
-        binding.edRubEur.addTextChangedListener {
-            isRubChangedLatestEUR = true
-        }
-        binding.edEurRub.addTextChangedListener {
-            isRubChangedLatestEUR = false
-        }
-        binding.changeEurBtn.setOnClickListener {
-            if (!binding.edEurRub.text.isEmpty() && !isRubChangedLatestEUR) {
-                vm.setRubToEurData(binding.edEurRub.text.toString().toDouble())
-            } else if (!binding.edRubEur.text.isEmpty() && isRubChangedLatestEUR) {
-                vm.setEurData(binding.edRubEur.text.toString().toDouble())
-            }
-        }
+        adapter = ConverterAdapter(vm, viewLifecycleOwner)
+        binding.rcView.adapter = adapter
+        adapter.submitList(listOfItems)
     }
 }

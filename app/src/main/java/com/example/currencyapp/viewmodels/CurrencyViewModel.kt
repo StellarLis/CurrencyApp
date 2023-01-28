@@ -1,8 +1,5 @@
 package com.example.currencyapp.viewmodels
 
-import android.content.Context
-import android.widget.Toast
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -32,6 +29,13 @@ class CurrencyViewModel @Inject constructor(
                     list = result.data!!
                     list[0].imageSource = R.drawable.us
                     list[1].imageSource = R.drawable.european
+                    list[2].imageSource = R.drawable.united_kingdom
+                    list[3].imageSource = R.drawable.china
+                    list[4].imageSource = R.drawable.japan
+                    list[5].imageSource = R.drawable.india
+                    list[6].imageSource = R.drawable.turkey
+                    list[7].imageSource = R.drawable.switzerland
+                    list[8].imageSource = R.drawable.israel
                     listForRV.postValue(list)
                 }
                 is Resource.Error -> {
