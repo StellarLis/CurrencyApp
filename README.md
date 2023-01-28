@@ -18,8 +18,8 @@ App that shows actual rates of USD and EUR. Also there is converter.
 
 ## Screenshots:
 
-![Screenshot_1](https://user-images.githubusercontent.com/86295320/184995821-15948e6c-d83a-48a5-8ed9-ff585825642a.jpg)
-![Screenshot_2](https://user-images.githubusercontent.com/86295320/184995823-93605769-8acc-4bca-aaf6-323c78cd8091.jpg)
+![Screenshot_1](https://user-images.githubusercontent.com/86295320/215260653-081779d8-ff62-4500-9ba1-1af8b4d5f469.png)
+![Screenshot_2](https://user-images.githubusercontent.com/86295320/215260656-6131073d-5a9f-4092-b6c6-62a4a953de79.png)
 
 ## App diagram:
 ![Diagram](https://user-images.githubusercontent.com/86295320/183637563-577b76a3-1aea-445d-8341-145500bf860d.jpg)
